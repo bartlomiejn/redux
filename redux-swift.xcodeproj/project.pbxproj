@@ -8,20 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		6033FDE42095ADC70081405C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033FDE32095ADC70081405C /* AppDelegate.swift */; };
-		6033FDE62095ADC70081405C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033FDE52095ADC70081405C /* ViewController.swift */; };
-		6033FDE92095ADC70081405C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6033FDE72095ADC70081405C /* Main.storyboard */; };
+		6033FDE62095ADC70081405C /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033FDE52095ADC70081405C /* AuthenticationViewController.swift */; };
+		6033FDE92095ADC70081405C /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6033FDE72095ADC70081405C /* Authentication.storyboard */; };
 		6033FDEB2095ADCA0081405C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6033FDEA2095ADCA0081405C /* Assets.xcassets */; };
 		6033FDEE2095ADCA0081405C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6033FDEC2095ADCA0081405C /* LaunchScreen.storyboard */; };
+		60DB3239209CA2B400ED58B2 /* AppStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3238209CA2B400ED58B2 /* AppStateStore.swift */; };
+		60DB323B209CA30700ED58B2 /* AuthenticationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB323A209CA30700ED58B2 /* AuthenticationReducer.swift */; };
+		60DB323D209CA31F00ED58B2 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB323C209CA31F00ED58B2 /* AppReducer.swift */; };
+		60DB323F209CA36300ED58B2 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB323E209CA36300ED58B2 /* AuthenticationState.swift */; };
+		60DB3241209CA38800ED58B2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3240209CA38800ED58B2 /* AppState.swift */; };
+		60DB3243209CA39F00ED58B2 /* AuthenticationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3242209CA39F00ED58B2 /* AuthenticationActions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6033FDE02095ADC60081405C /* redux-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "redux-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6033FDE32095ADC70081405C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6033FDE52095ADC70081405C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6033FDE82095ADC70081405C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6033FDE52095ADC70081405C /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		6033FDE82095ADC70081405C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentication.storyboard; sourceTree = "<group>"; };
 		6033FDEA2095ADCA0081405C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6033FDED2095ADCA0081405C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6033FDEF2095ADCA0081405C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60DB3238209CA2B400ED58B2 /* AppStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateStore.swift; sourceTree = "<group>"; };
+		60DB323A209CA30700ED58B2 /* AuthenticationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationReducer.swift; sourceTree = "<group>"; };
+		60DB323C209CA31F00ED58B2 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		60DB323E209CA36300ED58B2 /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
+		60DB3240209CA38800ED58B2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		60DB3242209CA39F00ED58B2 /* AuthenticationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationActions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +66,44 @@
 		6033FDE22095ADC60081405C /* redux-swift */ = {
 			isa = PBXGroup;
 			children = (
+				6033FDF52095B4C70081405C /* Modules */,
 				6033FDE32095ADC70081405C /* AppDelegate.swift */,
-				6033FDE52095ADC70081405C /* ViewController.swift */,
-				6033FDE72095ADC70081405C /* Main.storyboard */,
 				6033FDEA2095ADCA0081405C /* Assets.xcassets */,
 				6033FDEC2095ADCA0081405C /* LaunchScreen.storyboard */,
 				6033FDEF2095ADCA0081405C /* Info.plist */,
 			);
 			path = "redux-swift";
+			sourceTree = "<group>";
+		};
+		6033FDF52095B4C70081405C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				60DB3237209CA2A300ED58B2 /* App */,
+				60DB3236209CA29600ED58B2 /* Authentication */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		60DB3236209CA29600ED58B2 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				60DB323E209CA36300ED58B2 /* AuthenticationState.swift */,
+				60DB323A209CA30700ED58B2 /* AuthenticationReducer.swift */,
+				60DB3242209CA39F00ED58B2 /* AuthenticationActions.swift */,
+				6033FDE52095ADC70081405C /* AuthenticationViewController.swift */,
+				6033FDE72095ADC70081405C /* Authentication.storyboard */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		60DB3237209CA2A300ED58B2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				60DB3240209CA38800ED58B2 /* AppState.swift */,
+				60DB323C209CA31F00ED58B2 /* AppReducer.swift */,
+				60DB3238209CA2B400ED58B2 /* AppStateStore.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +166,7 @@
 			files = (
 				6033FDEE2095ADCA0081405C /* LaunchScreen.storyboard in Resources */,
 				6033FDEB2095ADCA0081405C /* Assets.xcassets in Resources */,
-				6033FDE92095ADC70081405C /* Main.storyboard in Resources */,
+				6033FDE92095ADC70081405C /* Authentication.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,20 +177,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6033FDE62095ADC70081405C /* ViewController.swift in Sources */,
+				60DB323B209CA30700ED58B2 /* AuthenticationReducer.swift in Sources */,
+				60DB323F209CA36300ED58B2 /* AuthenticationState.swift in Sources */,
+				60DB3241209CA38800ED58B2 /* AppState.swift in Sources */,
+				6033FDE62095ADC70081405C /* AuthenticationViewController.swift in Sources */,
 				6033FDE42095ADC70081405C /* AppDelegate.swift in Sources */,
+				60DB3239209CA2B400ED58B2 /* AppStateStore.swift in Sources */,
+				60DB323D209CA31F00ED58B2 /* AppReducer.swift in Sources */,
+				60DB3243209CA39F00ED58B2 /* AuthenticationActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6033FDE72095ADC70081405C /* Main.storyboard */ = {
+		6033FDE72095ADC70081405C /* Authentication.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6033FDE82095ADC70081405C /* Base */,
 			);
-			name = Main.storyboard;
+			name = Authentication.storyboard;
 			sourceTree = "<group>";
 		};
 		6033FDEC2095ADCA0081405C /* LaunchScreen.storyboard */ = {
@@ -290,7 +338,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.bartlomiejnowak.redux-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,7 +356,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.bartlomiejnowak.redux-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
