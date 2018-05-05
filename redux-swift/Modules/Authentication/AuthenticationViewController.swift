@@ -12,8 +12,16 @@ class AuthenticationViewController: UIViewController {
 
     var store: StateStore!
     
+    @IBOutlet private (set) weak var usernameField: UITextField!
+    @IBOutlet private (set) weak var passwordField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    @IBAction private func signIn() {
+        
     }
 }
 
@@ -24,3 +32,14 @@ extension AuthenticationViewController: StateStoreObserver {
     }
 }
 
+extension AuthenticationViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameField {
+            passwordField.becomeFirstResponder()
+        } else if textField == passwordField {
+            passwordField.resignFirstResponder()
+        }
+        return true
+    }
+}
