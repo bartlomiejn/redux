@@ -10,25 +10,21 @@ import UIKit
 
 class AuthenticationViewController: UIViewController {
 
-    var store: StateStore!
+    var presenter: AuthenticationPresenter!
     
     @IBOutlet private (set) weak var usernameField: UITextField!
     @IBOutlet private (set) weak var passwordField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    @IBAction private func textChanged(_ sender: UITextField) {
+        if sender == usernameField, let text = sender.text {
+            presenter.usernameChanged(to: text)
+        } else if sender == passwordField, let text = sender.text {
+            presenter.passwordChanged(to: text)
+        }
     }
     
     @IBAction private func signIn() {
-        
-    }
-}
-
-extension AuthenticationViewController: StateStoreObserver {
-    
-    func stateChanged(to state: AppState) {
-        
+        presenter.tappedSignIn()
     }
 }
 

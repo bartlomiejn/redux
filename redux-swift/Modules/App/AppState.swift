@@ -11,7 +11,9 @@ import Foundation
 struct AppState: State {
     var authentication: AuthenticationState
     
-    init(authentication: AuthenticationState = AuthenticationState(isLoggedIn: false, username: nil, password: nil)) {
+    init(
+        authentication: AuthenticationState = AuthenticationState(signInState: .normal, username: nil, password: nil)
+    ) {
         self.authentication = authentication
     }
 }

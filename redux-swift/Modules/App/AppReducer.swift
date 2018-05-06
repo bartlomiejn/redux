@@ -8,6 +8,15 @@
 
 import Foundation
 
-func appReducer(action: Action, state: AppState?) -> AppState {
-    return AppState(authentication: authenticationReducer(action: action, state: state?.authentication))
+class AppReducer {
+    
+    let authenticationReducer: AuthenticationReducer
+    
+    init(authenticationReducer: AuthenticationReducer) {
+        self.authenticationReducer = authenticationReducer
+    }
+    
+    func reduce(action: Action, state: AppState) -> AppState {
+        return AppState(authentication: authenticationReducer.reduce(action: action, state: state.authentication))
+    }
 }

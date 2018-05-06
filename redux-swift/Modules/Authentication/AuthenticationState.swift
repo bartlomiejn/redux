@@ -8,8 +8,15 @@
 
 import Foundation
 
+enum SignInState {
+    case notSignedIn
+    case signingIn
+    case success
+    case failure
+}
+
 struct AuthenticationState: State {
-    var isLoggedIn: Bool
+    var signInState: SignInState
     var username: String?
     var password: String?
 }

@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var store = StateStore(reduce: appReducer)
+    private let store = StateStore(reducer: AppReducer(authenticationReducer: AuthenticationReducer()))
     
     func application(
         _ application: UIApplication,
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func instantiateConfiguredAuthenticationController() -> AuthenticationViewController? {
         let storyboard = UIStoryboard(name: "Authentication", bundle: Bundle(for: AuthenticationViewController.self))
         let controller = storyboard.instantiateInitialViewController() as? AuthenticationViewController
-        controller?.store = store
+        controller?.presenter = AuthenticationPresenter(store: store, actionCreator: AuthenticationActionCreator())
         return controller
     }
 }

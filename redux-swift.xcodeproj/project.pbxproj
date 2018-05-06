@@ -18,6 +18,7 @@
 		60DB323F209CA36300ED58B2 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB323E209CA36300ED58B2 /* AuthenticationState.swift */; };
 		60DB3241209CA38800ED58B2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3240209CA38800ED58B2 /* AppState.swift */; };
 		60DB3243209CA39F00ED58B2 /* AuthenticationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3242209CA39F00ED58B2 /* AuthenticationActions.swift */; };
+		60DB3245209DD1FB00ED58B2 /* AuthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3244209DD1FB00ED58B2 /* AuthenticationPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		60DB323E209CA36300ED58B2 /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 		60DB3240209CA38800ED58B2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		60DB3242209CA39F00ED58B2 /* AuthenticationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationActions.swift; sourceTree = "<group>"; };
+		60DB3244209DD1FB00ED58B2 /* AuthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				60DB323E209CA36300ED58B2 /* AuthenticationState.swift */,
 				60DB323A209CA30700ED58B2 /* AuthenticationReducer.swift */,
 				60DB3242209CA39F00ED58B2 /* AuthenticationActions.swift */,
+				60DB3244209DD1FB00ED58B2 /* AuthenticationPresenter.swift */,
 				6033FDE52095ADC70081405C /* AuthenticationViewController.swift */,
 				6033FDE72095ADC70081405C /* Authentication.storyboard */,
 			);
@@ -183,6 +186,7 @@
 				6033FDE62095ADC70081405C /* AuthenticationViewController.swift in Sources */,
 				6033FDE42095ADC70081405C /* AppDelegate.swift in Sources */,
 				60DB3239209CA2B400ED58B2 /* AppStateStore.swift in Sources */,
+				60DB3245209DD1FB00ED58B2 /* AuthenticationPresenter.swift in Sources */,
 				60DB323D209CA31F00ED58B2 /* AppReducer.swift in Sources */,
 				60DB3243209CA39F00ED58B2 /* AuthenticationActions.swift in Sources */,
 			);

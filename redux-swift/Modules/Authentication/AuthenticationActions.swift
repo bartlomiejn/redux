@@ -8,10 +8,23 @@
 
 import Foundation
 
-struct LoginUsernameUpdated {
-    let username: String
+struct UpdateSignInUsername: Action {
+    let username: String?
+}
+struct UpdateSignInPassword: Action {
+    let password: String?
+}
+struct SigningIn: Action {}
+struct SignedIn: Action {}
+struct FailedSigningIn: Action {}
+
+protocol AuthenticationActionCreatorInterface {
+    func signIn(store: StateStore, state: AppState, callback: (Action?) -> Void)
 }
 
-struct LoginPasswordUpdated {
-    let password: String
+class AuthenticationActionCreator: AuthenticationActionCreatorInterface {
+    
+    func signIn(store: StateStore, state: AppState, callback: (Action?) -> Void) {
+        callback(nil)
+    }
 }

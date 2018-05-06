@@ -55,6 +55,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                                                 <connections>
+                                                    <action selector="textChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="nrA-db-b5b"/>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ehy-rp-atZ"/>
                                                 </connections>
                                             </textField>
@@ -88,6 +89,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="continue" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                                 <connections>
+                                                    <action selector="textChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="Mgb-TI-kv7"/>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Ypy-vH-4KU"/>
                                                 </connections>
                                             </textField>

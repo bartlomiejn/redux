@@ -8,14 +8,37 @@
 
 import Foundation
 
-func authenticationReducer(action: Action, state: AuthenticationState?) -> AuthenticationState {
-    switch action {
-    case let _ as LoginUsernameUpdated:
-        break
-    case let _ as LoginPasswordUpdated:
-        break
-    default:
-        break
+class AuthenticationReducer {
+    
+    func reduce(action: Action, state: AuthenticationState) -> AuthenticationState {
+        switch action {
+            case let action as UpdateSignInUsername:
+                return AuthenticationState(
+                    signInState: state.signInState,
+                    username: action.username,
+                    password: state.password)
+            case let action as UpdateSignInPassword:
+                return AuthenticationState(
+                    signInState: state.signInState,
+                    username: state.username,
+                    password: action.password)
+            case is SigningIn:
+                return AuthenticationState(
+                    signInState: .signingIn,
+                    username: state.username,
+                    password: state.password)
+            case is SignedIn:
+                return AuthenticationState(
+                    signInState: .success,
+                    username: state.username,
+                    password: state.password)
+            case is FailedSigningIn:
+                return AuthenticationState(
+                    signInState: .failure,
+                    username: state.username,
+                    password: state.password)
+            default:
+                return state
+        }
     }
-    return AuthenticationState(isLoggedIn: false, username: nil, password: nil)
 }
