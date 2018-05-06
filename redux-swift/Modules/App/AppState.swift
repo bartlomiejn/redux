@@ -12,7 +12,7 @@ struct AppState: State {
     var authentication: AuthenticationState
     
     init(
-        authentication: AuthenticationState = AuthenticationState(signInState: .normal, username: nil, password: nil)
+        authentication: AuthenticationState = AuthenticationState(signInState: .notSignedIn, username: nil, password: nil)
     ) {
         self.authentication = authentication
     }

@@ -19,12 +19,27 @@ struct SignedIn: Action {}
 struct FailedSigningIn: Action {}
 
 protocol AuthenticationActionCreatorInterface {
-    func signIn(store: StateStore, state: AppState, callback: (Action?) -> Void)
+    func signIn(store: StateStore, state: AppState, callback: @escaping (Action?) -> Void)
 }
 
 class AuthenticationActionCreator: AuthenticationActionCreatorInterface {
     
-    func signIn(store: StateStore, state: AppState, callback: (Action?) -> Void) {
-        callback(nil)
+    private let service: AuthenticationServiceInterface
+    
+    init(service: AuthenticationServiceInterface) {
+        self.service = service
+    }
+    
+    func signIn(store: StateStore, state: AppState, callback: @escaping (Action?) -> Void) {
+        guard let username = state.authentication.username, let password = state.authentication.password else {
+            callback(nil)
+            return
+        }
+        service.signIn(username: username, password: password, successCallback: {
+            callback(SignedIn())
+        }, failureCallback: { error in
+            callback(FailedSigningIn())
+        })
+        
     }
 }

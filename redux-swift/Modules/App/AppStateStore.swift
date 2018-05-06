@@ -61,9 +61,9 @@ class StateStore {
         dispatch(createAction(self, state))
     }
     
-    func dispatchAsync(_ asyncCreateAction: (StateStore, AppState, (Action?) -> Void) -> Void) {
-        asyncCreateAction(self, state) { action in
-            dispatch(action)
+    func dispatchAsync(_ asyncCreateAction: (StateStore, AppState, @escaping (Action?) -> Void) -> Void) {
+        asyncCreateAction(self, state) { [weak self] action in
+            self?.dispatch(action)
         }
     }
 }

@@ -11,6 +11,12 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private struct Constant {
+        static let `protocol` = "https"
+        static let host = "api.github.com"
+        static let timeoutInterval = 20.0
+    }
+    
     var window: UIWindow?
     private let store = StateStore(reducer: AppReducer(authenticationReducer: AuthenticationReducer()))
     
@@ -27,7 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func instantiateConfiguredAuthenticationController() -> AuthenticationViewController? {
         let storyboard = UIStoryboard(name: "Authentication", bundle: Bundle(for: AuthenticationViewController.self))
         let controller = storyboard.instantiateInitialViewController() as? AuthenticationViewController
-        controller?.presenter = AuthenticationPresenter(store: store, actionCreator: AuthenticationActionCreator())
+        let client = GitHubNetworkClient(
+            client: HTTPNetworkClient(
+                timeoutInterval: Constant.timeoutInterval,
+                generator: URLGenerator(protocol: Constant.protocol, host: Constant.host)
+            ),
+            store: store)
+        let actionCreator = AuthenticationActionCreator(service: AuthenticationService(client: client))
+        controller?.presenter = AuthenticationPresenter(store: store, actionCreator: actionCreator)
         return controller
     }
 }
