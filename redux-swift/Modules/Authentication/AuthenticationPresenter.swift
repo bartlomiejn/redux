@@ -16,11 +16,17 @@ protocol AuthenticationPresenterInterface {
 
 class AuthenticationPresenter: AuthenticationPresenterInterface {
     
+    private let view: AuthenticationViewInterface
     private let store: StateStoreListeningInterface
     private let interactor: AuthenticationInteractorInterface
     private var lastState: AuthenticationState
     
-    init(store: StateStoreListeningInterface, interactor: AuthenticationInteractorInterface) {
+    init(
+        view: AuthenticationViewInterface,
+        store: StateStoreListeningInterface,
+        interactor: AuthenticationInteractorInterface
+    ) {
+        self.view = view
         self.interactor = interactor
         self.store = store
         lastState = store.state.authentication
@@ -47,6 +53,26 @@ class AuthenticationPresenter: AuthenticationPresenterInterface {
 extension AuthenticationPresenter: StateStoreListener {
     
     func stateChanged(to state: AppState) {
-        
+        let authenticationState = state.authentication
+        guard lastState != authenticationState else {
+            return
+        }
+        lastState = authenticationState
+        view.show(password: lastState.password ?? "")
+        view.show(username: lastState.username ?? "")
+        switch lastState.signInState {
+            case .notSignedIn:
+                break
+            case .signingIn:
+                view.disableSignInButton()
+                view.hideError()
+                view.showSpinner()
+            case .failure:
+                view.enableSignInButton()
+                view.showError(description: "Invalid credentials.")
+                fallthrough
+            case .success:
+                view.hideSpinner()
+        }
     }
 }

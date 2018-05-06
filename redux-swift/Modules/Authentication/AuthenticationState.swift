@@ -15,7 +15,7 @@ enum SignInState {
     case failure
 }
 
-struct AuthenticationState: State {
+struct AuthenticationState: State, Equatable {
     var signInState: SignInState
     var username: String?
     var password: String?

@@ -32,7 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func instantiateConfiguredAuthenticationController() -> AuthenticationViewController? {
         let storyboard = UIStoryboard(name: "Authentication", bundle: Bundle(for: AuthenticationViewController.self))
-        let controller = storyboard.instantiateInitialViewController() as? AuthenticationViewController
+        guard let controller = storyboard.instantiateInitialViewController() as? AuthenticationViewController else {
+            return nil
+        }
         let client = GitHubNetworkClient(
             client: HTTPNetworkClient(
                 timeoutInterval: Constant.timeoutInterval,
@@ -40,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ),
             store: store)
         let interactor = AuthenticationInteractor(store: store, service: AuthenticationService(client: client))
-        controller?.presenter = AuthenticationPresenter(store: store, interactor: interactor)
+        controller.presenter = AuthenticationPresenter(view: controller, store: store, interactor: interactor)
         return controller
     }
 }
