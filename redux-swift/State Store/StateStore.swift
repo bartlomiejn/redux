@@ -52,8 +52,8 @@ class StateStore: StateStoreDispatchInterface, StateStoreListeningInterface {
     }
     
     /**
-     Dispatch an action. State update is executed synchronously on internal queue for sequential updates. After state is
-     reduced, listeners are asynchronously noticed of a state change on main queue. Middleware logic is executed before
+     Dispatch an action. State update is executed synchronously on private serial queue. After state is reduced,
+     listeners are asynchronously noticed of a state change on main queue. Middleware logic is executed before
      reduction.
      */
     func dispatch(_ action: Action) {

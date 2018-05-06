@@ -9,5 +9,8 @@
 import Foundation
 
 protocol Middleware: class {
+    /**
+     Logic to be executed before performing state reduction.
+     */
     func process(action: Action, store: StateStore)
 }

@@ -8,10 +8,16 @@
 
 import Foundation
 
+/**
+ Application state tree.
+ */
 struct AppState: State {
     var authentication = AuthenticationState(signInState: .notSignedIn, username: nil, password: nil)
 }
 
+/**
+ Generates next application state based on provided action.
+ */
 struct Reducer {
     let authenticationReducer: AuthenticationReducer
     
