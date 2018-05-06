@@ -27,8 +27,8 @@ class AuthenticationPresenter: AuthenticationPresenterInterface {
         interactor: AuthenticationInteractorInterface
     ) {
         self.view = view
-        self.interactor = interactor
         self.store = store
+        self.interactor = interactor
         lastState = store.state.authentication
         store.subscribe(self)
     }
@@ -58,11 +58,17 @@ extension AuthenticationPresenter: StateStoreListener {
             return
         }
         lastState = authenticationState
+        updateLastCredentials()
+        updateWithLastSignInState()
+    }
+    
+    private func updateLastCredentials() {
         view.show(password: lastState.password ?? "")
         view.show(username: lastState.username ?? "")
+    }
+    
+    private func updateWithLastSignInState() {
         switch lastState.signInState {
-            case .notSignedIn:
-                break
             case .signingIn:
                 view.disableSignInButton()
                 view.hideError()
@@ -70,9 +76,9 @@ extension AuthenticationPresenter: StateStoreListener {
             case .failure:
                 view.enableSignInButton()
                 view.showError(description: "Invalid credentials.")
-                fallthrough
-            case .success:
                 view.hideSpinner()
+            case .notSignedIn, .success:
+                break
         }
     }
 }

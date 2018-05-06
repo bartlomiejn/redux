@@ -10,10 +10,7 @@ import Foundation
 
 protocol AuthenticationServiceInterface {
     func signIn(
-        username: String,
-        password: String,
-        successCallback: @escaping () -> Void,
-        failureCallback: ((Error?) -> Void)?
+        username: String, password: String, successCallback: @escaping () -> Void, failureCallback: ((Error?) -> Void)?
     )
 }
 
@@ -26,10 +23,7 @@ class AuthenticationService: AuthenticationServiceInterface {
     }
     
     func signIn(
-        username: String,
-        password: String,
-        successCallback: @escaping () -> Void,
-        failureCallback: ((Error?) -> Void)?
+        username: String, password: String, successCallback: @escaping () -> Void, failureCallback: ((Error?) -> Void)?
     ) {
         do {
             try client.setBasicAuthToken(username: username, password: password)

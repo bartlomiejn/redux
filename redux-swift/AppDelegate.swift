@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     var window: UIWindow?
-    private let store = StateStore(reducer: AppReducer(authenticationReducer: AuthenticationReducer()))
+    private let store = StateStore(reducer: Reducer(authenticationReducer: AuthenticationReducer()))
     
     func application(
         _ application: UIApplication,

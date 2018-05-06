@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum SignInState {
-    case notSignedIn
-    case signingIn
-    case success
-    case failure
-}
-
 struct AuthenticationState: State, Equatable {
+    enum SignInState {
+        case notSignedIn
+        case signingIn
+        case success
+        case failure
+    }
+    
     var signInState: SignInState
     var username: String?
     var password: String?
@@ -36,7 +36,6 @@ struct AuthenticationReducer {
                 mutableState.password = nil
                 mutableState.signInState = .success
             case is FailedSigningIn:
-                mutableState.password = nil
                 mutableState.signInState = .failure
             default:
                 break

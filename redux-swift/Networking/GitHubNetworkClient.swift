@@ -29,7 +29,13 @@ protocol GitHubNetworkClientInterface {
     func setBasicAuthToken(username: String, password: String) throws
 }
 
-class GitHubNetworkClient: GitHubNetworkClientInterface {
+final class GitHubNetworkClient: GitHubNetworkClientInterface {
+    
+    private struct Constant {
+        static let userAgent = "User-Agent"
+        static let authorization = "Authorization"
+        static let userAgentValue = "bartlomiejn/redux-swift"
+    }
     
     private let client: HTTPNetworkClient
     private let store: StateStore
@@ -43,7 +49,7 @@ class GitHubNetworkClient: GitHubNetworkClientInterface {
         self.client = client
         self.store = store
         self.tokenGenerator = tokenGenerator
-        client.headerFields["User-Agent"] = "bartlomiejn/redux-swift"
+        client.headerFields[Constant.userAgent] = Constant.userAgentValue
     }
     
     func request(
@@ -78,6 +84,6 @@ class GitHubNetworkClient: GitHubNetworkClientInterface {
     }
     
     func setBasicAuthToken(username: String, password: String) throws {
-        client.headerFields["Authorization"] = "Basic \(try tokenGenerator.token(from: username, password: password))"
+        client.headerFields[Constant.authorization] = "Basic \(try tokenGenerator.token(from: username, password: password))"
     }
 }

@@ -12,8 +12,7 @@ struct AppState: State {
     var authentication = AuthenticationState(signInState: .notSignedIn, username: nil, password: nil)
 }
 
-class AppReducer {
-    
+struct Reducer {
     let authenticationReducer: AuthenticationReducer
     
     init(authenticationReducer: AuthenticationReducer) {

@@ -1,5 +1,5 @@
 //
-//  AppRouter.swift
+//  State.swift
 //  redux-swift
 //
 //  Created by Bartłomiej Nowak on 06.05.2018.
@@ -8,7 +8,4 @@
 
 import Foundation
 
-class AppRouter {
-    
-    
-}
+protocol State {}

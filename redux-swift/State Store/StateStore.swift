@@ -8,18 +8,6 @@
 
 import Foundation
 
-protocol Action {}
-
-protocol State {}
-
-protocol StateStoreListener: class {
-    func stateChanged(to state: AppState)
-}
-
-protocol Middleware: class {
-    func process(action: Action, store: StateStore)
-}
-
 protocol StateBearer: class {
     var state: AppState { get }
 }
@@ -33,23 +21,15 @@ protocol StateStoreListeningInterface: StateBearer {
     func unsubscribe(_ listener: StateStoreListener)
 }
 
-class LoggerMiddleware: Middleware {
-    func process(action: Action, store: StateStore) {
-        print("LoggerMiddleware\n    \(action)\n    For state: \(store.state)")
-    }
-}
-
 class StateStore: StateStoreDispatchInterface, StateStoreListeningInterface {
     
-    typealias ReducerFunctionType = (Action, AppState?) -> AppState
-    
-    private let reducer: AppReducer
-    private let queue = DispatchQueue(label: "State Store Dispatch Queue")
+    private let reducer: Reducer
     private (set) var state = AppState()
     private var listeners = [StateStoreListener]()
     private var middlewares = [Middleware]()
+    private let queue = DispatchQueue(label: "State Store Dispatch Queue")
     
-    init(reducer: AppReducer, middlewares: [Middleware] = [LoggerMiddleware()]) {
+    init(reducer: Reducer, middlewares: [Middleware] = [LoggerMiddleware()]) {
         self.reducer = reducer
         self.middlewares = middlewares
     }
@@ -72,8 +52,9 @@ class StateStore: StateStoreDispatchInterface, StateStoreListeningInterface {
     }
     
     /**
-     Dispatch an action. Call is executed synchronously on internal queue for serial state updates. After state is
-     reduced, listeners are asynchronously noticed of a state change on main queue.
+     Dispatch an action. State update is executed synchronously on internal queue for sequential updates. After state is
+     reduced, listeners are asynchronously noticed of a state change on main queue. Middleware logic is executed before
+     reduction.
      */
     func dispatch(_ action: Action) {
         middlewares.forEach { $0.process(action: action, store: self) }

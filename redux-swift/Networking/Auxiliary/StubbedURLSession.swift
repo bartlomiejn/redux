@@ -23,9 +23,8 @@ class StubbedURLSession: URLSession {
     }
     
     override func dataTask(
-        with request: URLRequest,
-        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
-        ) -> URLSessionDataTask {
+        with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
+    ) -> URLSessionDataTask {
         completionHandler(body, response, nil)
         return DummyURLSessionDataTask()
     }
