@@ -8,8 +8,20 @@
 
 import Foundation
 
-class AuthenticationReducer {
-    
+enum SignInState {
+    case notSignedIn
+    case signingIn
+    case success
+    case failure
+}
+
+struct AuthenticationState: State, Equatable {
+    var signInState: SignInState
+    var username: String?
+    var password: String?
+}
+
+struct AuthenticationReducer {
     func reduce(action: Action, state: AuthenticationState) -> AuthenticationState {
         var mutableState = state
         switch action {

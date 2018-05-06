@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct AppState: State {
+    var authentication = AuthenticationState(signInState: .notSignedIn, username: nil, password: nil)
+}
+
 class AppReducer {
     
     let authenticationReducer: AuthenticationReducer
