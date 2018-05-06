@@ -17,7 +17,7 @@
 		60DB323D209CA31F00ED58B2 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB323C209CA31F00ED58B2 /* AppReducer.swift */; };
 		60DB323F209CA36300ED58B2 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB323E209CA36300ED58B2 /* AuthenticationState.swift */; };
 		60DB3241209CA38800ED58B2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3240209CA38800ED58B2 /* AppState.swift */; };
-		60DB3243209CA39F00ED58B2 /* AuthenticationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3242209CA39F00ED58B2 /* AuthenticationActions.swift */; };
+		60DB3243209CA39F00ED58B2 /* AuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3242209CA39F00ED58B2 /* AuthenticationInteractor.swift */; };
 		60DB3245209DD1FB00ED58B2 /* AuthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3244209DD1FB00ED58B2 /* AuthenticationPresenter.swift */; };
 		60DB3247209EFEE800ED58B2 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3246209EFEE800ED58B2 /* AuthenticationService.swift */; };
 		60DB324A209F296500ED58B2 /* HTTPNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3249209F296500ED58B2 /* HTTPNetworkClient.swift */; };
@@ -25,6 +25,7 @@
 		60DB324E209F29DA00ED58B2 /* URLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB324D209F29DA00ED58B2 /* URLGenerator.swift */; };
 		60DB3250209F29F400ED58B2 /* BasicAuthTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB324F209F29F400ED58B2 /* BasicAuthTokenGenerator.swift */; };
 		60DB3253209F2A1E00ED58B2 /* ModelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3252209F2A1E00ED58B2 /* ModelDecoder.swift */; };
+		60DB3256209F80F100ED58B2 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3255209F80F100ED58B2 /* AppRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,7 @@
 		60DB323C209CA31F00ED58B2 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		60DB323E209CA36300ED58B2 /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 		60DB3240209CA38800ED58B2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		60DB3242209CA39F00ED58B2 /* AuthenticationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationActions.swift; sourceTree = "<group>"; };
+		60DB3242209CA39F00ED58B2 /* AuthenticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInteractor.swift; sourceTree = "<group>"; };
 		60DB3244209DD1FB00ED58B2 /* AuthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPresenter.swift; sourceTree = "<group>"; };
 		60DB3246209EFEE800ED58B2 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		60DB3249209F296500ED58B2 /* HTTPNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPNetworkClient.swift; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		60DB324D209F29DA00ED58B2 /* URLGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLGenerator.swift; sourceTree = "<group>"; };
 		60DB324F209F29F400ED58B2 /* BasicAuthTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuthTokenGenerator.swift; sourceTree = "<group>"; };
 		60DB3252209F2A1E00ED58B2 /* ModelDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDecoder.swift; sourceTree = "<group>"; };
+		60DB3255209F80F100ED58B2 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +104,10 @@
 		60DB3236209CA29600ED58B2 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				60DB3246209EFEE800ED58B2 /* AuthenticationService.swift */,
 				60DB323E209CA36300ED58B2 /* AuthenticationState.swift */,
 				60DB323A209CA30700ED58B2 /* AuthenticationReducer.swift */,
-				60DB3242209CA39F00ED58B2 /* AuthenticationActions.swift */,
+				60DB3246209EFEE800ED58B2 /* AuthenticationService.swift */,
+				60DB3242209CA39F00ED58B2 /* AuthenticationInteractor.swift */,
 				60DB3244209DD1FB00ED58B2 /* AuthenticationPresenter.swift */,
 				6033FDE52095ADC70081405C /* AuthenticationViewController.swift */,
 				6033FDE72095ADC70081405C /* Authentication.storyboard */,
@@ -119,6 +121,7 @@
 				60DB3240209CA38800ED58B2 /* AppState.swift */,
 				60DB323C209CA31F00ED58B2 /* AppReducer.swift */,
 				60DB3238209CA2B400ED58B2 /* AppStateStore.swift */,
+				60DB3255209F80F100ED58B2 /* AppRouter.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -126,21 +129,21 @@
 		60DB3248209F295800ED58B2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				60DB3251209F2A1200ED58B2 /* Coding */,
-				60DB324D209F29DA00ED58B2 /* URLGenerator.swift */,
-				60DB324F209F29F400ED58B2 /* BasicAuthTokenGenerator.swift */,
+				60DB3251209F2A1200ED58B2 /* Auxiliary */,
 				60DB3249209F296500ED58B2 /* HTTPNetworkClient.swift */,
 				60DB324B209F299000ED58B2 /* GitHubNetworkClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		60DB3251209F2A1200ED58B2 /* Coding */ = {
+		60DB3251209F2A1200ED58B2 /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
 				60DB3252209F2A1E00ED58B2 /* ModelDecoder.swift */,
+				60DB324D209F29DA00ED58B2 /* URLGenerator.swift */,
+				60DB324F209F29F400ED58B2 /* BasicAuthTokenGenerator.swift */,
 			);
-			path = Coding;
+			path = Auxiliary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,9 +229,10 @@
 				60DB324A209F296500ED58B2 /* HTTPNetworkClient.swift in Sources */,
 				60DB3239209CA2B400ED58B2 /* AppStateStore.swift in Sources */,
 				60DB3245209DD1FB00ED58B2 /* AuthenticationPresenter.swift in Sources */,
+				60DB3256209F80F100ED58B2 /* AppRouter.swift in Sources */,
 				60DB323D209CA31F00ED58B2 /* AppReducer.swift in Sources */,
 				60DB3253209F2A1E00ED58B2 /* ModelDecoder.swift in Sources */,
-				60DB3243209CA39F00ED58B2 /* AuthenticationActions.swift in Sources */,
+				60DB3243209CA39F00ED58B2 /* AuthenticationInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

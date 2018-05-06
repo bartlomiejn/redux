@@ -9,11 +9,5 @@
 import Foundation
 
 struct AppState: State {
-    var authentication: AuthenticationState
-    
-    init(
-        authentication: AuthenticationState = AuthenticationState(signInState: .notSignedIn, username: nil, password: nil)
-    ) {
-        self.authentication = authentication
-    }
+    var authentication = AuthenticationState(signInState: .notSignedIn, username: nil, password: nil)
 }

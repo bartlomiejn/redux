@@ -39,8 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 generator: URLGenerator(protocol: Constant.protocol, host: Constant.host)
             ),
             store: store)
-        let actionCreator = AuthenticationActionCreator(service: AuthenticationService(client: client))
-        controller?.presenter = AuthenticationPresenter(store: store, actionCreator: actionCreator)
+        let interactor = AuthenticationInteractor(store: store, service: AuthenticationService(client: client))
+        controller?.presenter = AuthenticationPresenter(store: store, interactor: interactor)
         return controller
     }
 }

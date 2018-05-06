@@ -19,7 +19,17 @@ struct GitHubAPIError: Error {
     let response: Response?
 }
 
-class GitHubNetworkClient {
+protocol GitHubNetworkClientInterface {
+    func request(
+        _ method: HTTPMethod,
+        path: String,
+        successCallback: @escaping (Data?) -> Void,
+        failureCallback: ((Error?) -> Void)?
+    )
+    func setBasicAuthToken(username: String, password: String) throws
+}
+
+class GitHubNetworkClient: GitHubNetworkClientInterface {
     
     private let client: HTTPNetworkClient
     private let store: StateStore
@@ -56,7 +66,8 @@ class GitHubNetworkClient {
                 if let data = data {
                     failureCallback?(GitHubAPIError(
                         statusCode: unwrappedResponse.statusCode,
-                        response: ModelDecoder<GitHubAPIError.Response>().model(from: data)))
+                        response: ModelDecoder<GitHubAPIError.Response>().model(from: data)
+                    ))
                 } else {
                     failureCallback?(GitHubAPIError(statusCode: unwrappedResponse.statusCode, response: nil))
                 }

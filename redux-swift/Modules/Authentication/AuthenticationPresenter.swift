@@ -8,35 +8,43 @@
 
 import Foundation
 
-class AuthenticationPresenter {
+protocol AuthenticationPresenterInterface {
+    func usernameChanged(to username: String)
+    func passwordChanged(to password: String)
+    func tappedSignIn()
+}
+
+class AuthenticationPresenter: AuthenticationPresenterInterface {
     
-    private let store: StateStore
-    private let actionCreator: AuthenticationActionCreatorInterface
+    private let store: StateStoreListeningInterface
+    private let interactor: AuthenticationInteractorInterface
+    private var lastState: AuthenticationState
     
-    init(store: StateStore, actionCreator: AuthenticationActionCreatorInterface) {
+    init(store: StateStoreListeningInterface, interactor: AuthenticationInteractorInterface) {
+        self.interactor = interactor
         self.store = store
-        self.actionCreator = actionCreator
-        store.subscribe(withObserver: self)
+        lastState = store.state.authentication
+        store.subscribe(self)
     }
     
     deinit {
-        store.unsubscribe(observer: self)
+        store.unsubscribe(self)
     }
     
     func usernameChanged(to username: String) {
-        store.dispatch(UpdateSignInUsername(username: username))
+        interactor.usernameChanged(to: username)
     }
     
     func passwordChanged(to password: String) {
-        store.dispatch(UpdateSignInPassword(password: password))
+        interactor.passwordChanged(to: password)
     }
     
     func tappedSignIn() {
-        store.dispatchAsync(actionCreator.signIn)
+        interactor.signIn()
     }
 }
 
-extension AuthenticationPresenter: StateStoreObserver {
+extension AuthenticationPresenter: StateStoreListener {
     
     func stateChanged(to state: AppState) {
         

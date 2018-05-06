@@ -9,39 +9,48 @@
 import Foundation
 
 protocol Action {}
+
 protocol State {}
 
-protocol StateStoreObserver: class {
+protocol StateStoreListener: class {
     func stateChanged(to state: AppState)
 }
 
-// TODO: Middleware implementation
-protocol Middleware: class {
-    func apply(to action: Action, store: StateStore, next: Middleware)
+protocol StateBearer: class {
+    var state: AppState { get }
 }
 
-class StateStore {
+protocol StateStoreDispatchInterface: StateBearer {
+    func dispatch(_ action: Action?)
+}
+
+protocol StateStoreListeningInterface: StateBearer {
+    func subscribe(_ listener: StateStoreListener)
+    func unsubscribe(_ listener: StateStoreListener)
+}
+
+class StateStore: StateStoreDispatchInterface, StateStoreListeningInterface {
     
     typealias ReducerFunctionType = (Action, AppState?) -> AppState
     
     private let reducer: AppReducer
     private let queue = DispatchQueue(label: "State Store Dispatch Queue")
     private (set) var state = AppState()
-    private var observers = [StateStoreObserver]()
+    private var listeners = [StateStoreListener]()
     
     init(reducer: AppReducer) {
         self.reducer = reducer
     }
     
-    func subscribe(withObserver observer: StateStoreObserver) {
-        observers.append(observer)
+    func subscribe(_ listener: StateStoreListener) {
+        listeners.append(listener)
     }
     
-    func unsubscribe(observer: StateStoreObserver) {
-        guard let index = observers.index(where: { $0 === observer }) else {
+    func unsubscribe(_ listener: StateStoreListener) {
+        guard let index = listeners.index(where: { $0 === listener }) else {
             return
         }
-        observers.remove(at: index)
+        listeners.remove(at: index)
     }
     
     func dispatch(_ action: Action?) {
@@ -50,20 +59,10 @@ class StateStore {
                 return
             }
             strongSelf.state = strongSelf.reducer.reduce(action: action, state: strongSelf.state)
-            print(strongSelf.state)
+            print(strongSelf.state) // TODO: Move print to middleware
             DispatchQueue.main.async {
-                strongSelf.observers.forEach { $0.stateChanged(to: strongSelf.state) }
+                strongSelf.listeners.forEach { $0.stateChanged(to: strongSelf.state) }
             }
-        }
-    }
-    
-    func dispatch(_ createAction: (StateStore, AppState) -> Action?) {
-        dispatch(createAction(self, state))
-    }
-    
-    func dispatchAsync(_ asyncCreateAction: (StateStore, AppState, @escaping (Action?) -> Void) -> Void) {
-        asyncCreateAction(self, state) { [weak self] action in
-            self?.dispatch(action)
         }
     }
 }
