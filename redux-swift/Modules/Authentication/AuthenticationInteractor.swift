@@ -11,11 +11,15 @@ import Foundation
 struct UpdateSignInUsername: Action {
     let username: String?
 }
+
 struct UpdateSignInPassword: Action {
     let password: String?
 }
+
 struct SigningIn: Action {}
+
 struct SignedIn: Action {}
+
 struct FailedSigningIn: Action {}
 
 protocol AuthenticationInteractorInterface {

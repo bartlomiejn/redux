@@ -24,6 +24,8 @@
 		60DB3250209F29F400ED58B2 /* BasicAuthTokenGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB324F209F29F400ED58B2 /* BasicAuthTokenGenerator.swift */; };
 		60DB3253209F2A1E00ED58B2 /* ModelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3252209F2A1E00ED58B2 /* ModelDecoder.swift */; };
 		60DB3256209F80F100ED58B2 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3255209F80F100ED58B2 /* AppRouter.swift */; };
+		60DB3258209F9E5700ED58B2 /* StubbedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3257209F9E5700ED58B2 /* StubbedURLSession.swift */; };
+		60DB325A209F9E6C00ED58B2 /* HTTPResponseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB3259209F9E6C00ED58B2 /* HTTPResponseStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		60DB324F209F29F400ED58B2 /* BasicAuthTokenGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuthTokenGenerator.swift; sourceTree = "<group>"; };
 		60DB3252209F2A1E00ED58B2 /* ModelDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDecoder.swift; sourceTree = "<group>"; };
 		60DB3255209F80F100ED58B2 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		60DB3257209F9E5700ED58B2 /* StubbedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubbedURLSession.swift; sourceTree = "<group>"; };
+		60DB3259209F9E6C00ED58B2 /* HTTPResponseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponseStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 		60DB3251209F2A1200ED58B2 /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
+				60DB3259209F9E6C00ED58B2 /* HTTPResponseStub.swift */,
+				60DB3257209F9E5700ED58B2 /* StubbedURLSession.swift */,
 				60DB3252209F2A1E00ED58B2 /* ModelDecoder.swift */,
 				60DB324D209F29DA00ED58B2 /* URLGenerator.swift */,
 				60DB324F209F29F400ED58B2 /* BasicAuthTokenGenerator.swift */,
@@ -213,6 +219,7 @@
 			files = (
 				60DB324C209F299000ED58B2 /* GitHubNetworkClient.swift in Sources */,
 				60DB323B209CA30700ED58B2 /* AuthenticationReducer.swift in Sources */,
+				60DB3258209F9E5700ED58B2 /* StubbedURLSession.swift in Sources */,
 				60DB324E209F29DA00ED58B2 /* URLGenerator.swift in Sources */,
 				6033FDE62095ADC70081405C /* AuthenticationViewController.swift in Sources */,
 				60DB3250209F29F400ED58B2 /* BasicAuthTokenGenerator.swift in Sources */,
@@ -224,6 +231,7 @@
 				60DB3256209F80F100ED58B2 /* AppRouter.swift in Sources */,
 				60DB323D209CA31F00ED58B2 /* AppReducer.swift in Sources */,
 				60DB3253209F2A1E00ED58B2 /* ModelDecoder.swift in Sources */,
+				60DB325A209F9E6C00ED58B2 /* HTTPResponseStub.swift in Sources */,
 				60DB3243209CA39F00ED58B2 /* AuthenticationInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
